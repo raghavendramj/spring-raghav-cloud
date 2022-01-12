@@ -1,0 +1,86 @@
+Spring Boot Project
+	-> Student -> id, name, email
+	@Service
+		-> getStudents()
+	
+	@RestController
+	/ -> "Welcome to our application FSD C26!"
+	URL -> http://localhost:8085/
+	
+	/students -> List<Student>
+	URL -> http://localhost:8085/students
+	
+
+Git Hub
+	-> git init
+	-> git remote add spring-jenkins-aws https://github.com/raghavendramj/spring-raghav-cloud.git
+
+Jenkins - FreeStyle Job
+		Link: https://www.jenkins.io/download/
+		Download Jenkins 2.319.1 LTS for: windows	
+		Download Link:- https://www.jenkins.io/download/thank-you-downloading-windows-installer-stable	
+		Install Steps:
+			https://www.jenkins.io/doc/book/installing/windows/	
+		Initial Password Link:-
+			C:\Users\Raghavendra M J\.jenkins\secrets\initialAdminPassword
+
+	-> Manually Start the build
+	
+Automatic Deployment locally
+	Start your local tomcat
+	add the following
+	tomcat-users.xml
+		<role rolename="manager-gui"/>
+		<role rolename="manager-script"/>
+		<user username="raghav" password="raghav" roles="manager-gui,manager-script"/>
+
+AWS
+	Unix Box
+	-> launching an EC2 instance -> Redhat - Unix
+	-> creating S3 bukcet -> upload this jar
+	-> extract an url -> use it
+	
+	
+	Host Name :- ec2-184-72-82-183.compute-1.amazonaws.com
+	
+	ssh -i "raghavendra-redhat.pem" ec2-user@ec2-184-72-82-183.compute-1.amazonaws.com
+	
+	puttgen -> load raghavendra-redhat.pem -> generate a ppk file -> raghavendra-redhat.ppk
+	
+	with the help of raghavendra-redhat.ppk, login to the unix box using putty
+	
+	
+	sudo su	
+	sudo yum upgrade
+	yum install wget
+	sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+	sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+	yum install java-1.8.0-openjdk
+	sudo yum clean all
+	sudo yum install jenkins 
+	if fails -> sudo yum install jenkins --nobest
+	sudo systemctl daemon-reload
+	sudo systemctl start jenkins
+	sudo systemctl status jenkins
+	
+	 cat /var/lib/jenkins/secrets/initialAdminPassword
+	 
+
+	
+	Browsers:
+		http://<your_server_public_DNS>:8080
+		http://ec2-user@ec2-184-72-82-183.compute-1.amazonaws.com:8080/login?from=%2F
+		
+		-> cat /var/lib/jenkins/secrets/initialAdminPassword -> 5b2a8cd824414944a4d63d133d8e649d
+	
+	Username :- raghav_admin
+	Password :- raghav_admin
+	
+	http://ec2-184-72-82-183.compute-1.amazonaws.com:8080/
+	http://ec2-184-72-82-183.compute-1.amazonaws.com:8085/
+
+	Windows
+		-> set up jenkins -> github link		
+		
+		https://raghavendra-redhat.s3.ap-south-1.amazonaws.com/spring-jenkins-aws-v1.jar
+		
